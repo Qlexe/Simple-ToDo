@@ -8,7 +8,7 @@ function Header() {
         </div>
         <div className="relative flex items-center w-[32px] h-[32px]">
           <span className="top top-1/2 left-1/2 absolute !font-baloo text-[15px] text-white -translate-x-1/2 -translate-y-3/10">
-            15
+            {new Date().getDate()}
           </span>
           <svg
             width="32"
