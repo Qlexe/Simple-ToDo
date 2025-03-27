@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import {
-  Header,
+  HeaderHome,
   Footer,
   TodoList,
   AddTaskForm,
@@ -97,7 +97,7 @@ function App() {
   function Home() {
     return (
       <div>
-        <Header />
+        <HeaderHome />
         <TodoList
           tasks={tasks}
           setTasks={setTasks}
@@ -108,7 +108,7 @@ function App() {
           onClick={() => setShowPage("add")}
           className="right-6 bottom-[90px] fixed flex justify-center items-center bg-[#9395d3] shadow rounded-[100%] w-[70px] h-[70px] font-bold text-[30px] text-white cursor-pointer"
         >
-          <img src={plus} alt="" />
+          <img src={plus} alt="Add task" />
         </button>
         <Footer setShowPage={setShowPage} />
       </div>
@@ -116,30 +116,40 @@ function App() {
   }
 
   return (
-    <div>
-      {showPage === "home" && <Home />}
-      {showPage === "add" && (
-        <AddTaskForm
-          tasks={tasks}
-          setShowPage={setShowPage}
-          setTasks={setTasks}
-        />
-      )}
-      {showPage === "edit" && (
-        <EditTaskForm
-          taskId={selectedTaskId}
-          tasks={tasks}
-          setShowPage={setShowPage}
-          setTasks={setTasks}
-        />
-      )}
-      {showPage === "completed" && (
-        <CompletedTasks
-          tasks={tasks.filter((task) => task.isCompleted)}
-          setShowPage={setShowPage}
-        />
-      )}
-    </div>
+    <main className="pt-[84px] pb-[90px]">
+      {(() => {
+        switch (showPage) {
+          case "home":
+            return <Home />;
+          case "add":
+            return (
+              <AddTaskForm
+                tasks={tasks}
+                setShowPage={setShowPage}
+                setTasks={setTasks}
+              />
+            );
+          case "edit":
+            return (
+              <EditTaskForm
+                taskId={selectedTaskId}
+                tasks={tasks}
+                setShowPage={setShowPage}
+                setTasks={setTasks}
+              />
+            );
+          case "completed":
+            return (
+              <CompletedTasks
+                tasks={tasks.filter((task) => task.isCompleted)}
+                setShowPage={setShowPage}
+              />
+            );
+          default:
+            return <Home />;
+        }
+      })()}
+    </main>
   );
 }
 
