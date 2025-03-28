@@ -18,7 +18,6 @@ function App() {
     return savedTasks
       ? JSON.parse(savedTasks)
       : [
-          // Your existing default tasks array
           {
             id: 1,
             title: "Buy groceries",
@@ -88,7 +87,6 @@ function App() {
         ];
   });
 
-  // Sync tasks to localStorage whenever tasks change
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
