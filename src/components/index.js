@@ -5,3 +5,5 @@ export { default as Footer } from "./Footer";
 export { default as AddTaskForm } from "./AddTaskForm";
 export { default as EditTaskForm } from "./EditTaskForm";
 export { default as CompletedTasks } from "./CompletedTasks";
+export { default as Home } from "./Home";
+export { default as TaskForm } from "./TaskForm";
